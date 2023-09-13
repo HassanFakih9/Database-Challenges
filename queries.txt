@@ -110,6 +110,10 @@ CREATE TABLE BookAuthors (
 );
 
 
+Challenge 5:
+https://dbdiagram.io/d/6501b94c02bd1c4a5e803a95
+
+
 
 
 
