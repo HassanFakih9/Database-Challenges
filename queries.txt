@@ -68,6 +68,47 @@ RIGHT JOIN teachers ON students.teacher_id = teachers.id
 WHERE students.id IS NULL;
 
 //////////////////////////////////////////////////////////
+Challenge 5:
+
+-- Create Authors table
+CREATE TABLE Authors (
+    author_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    date_of_birth DATE,
+    nationality VARCHAR(50)
+);
+
+ Publishers table:
+CREATE TABLE Publishers (
+    publisher_id INT AUTO_INCREMENT PRIMARY KEY,
+    publisher_name VARCHAR(100) NOT NULL,
+    headquarters_location VARCHAR(100),
+    year_founded INT
+);
+
+ 
+CREATE TABLE Books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    isbn VARCHAR(20),
+    publication_date DATE,
+    genre VARCHAR(50),
+    author_id INT,
+    publisher_id INT,
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id),
+    FOREIGN KEY (publisher_id) REFERENCES Publishers(publisher_id)
+);
+
+-- Create a junction table for the Many-to-Many relationship between Books and Authors
+CREATE TABLE BookAuthors (
+    book_id INT,
+    author_id INT,
+    PRIMARY KEY (book_id, author_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id),
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id)
+);
+
 
 
 
