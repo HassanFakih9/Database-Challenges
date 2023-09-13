@@ -1,0 +1,77 @@
+Challenge 1:
+mysql -u root -p command
+CREATE DATABASE schoolDB;
+USE schoolDB;
+SHOW DATABASES;
+//////////////////////////
+
+Chalenge 2:
+CREATE TABLE teachers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    subject VARCHAR(50)
+);
+SHOW TABLES;
+DESCRIBE teachers;
+/////////////////////////////
+chalenge 3:
+SELECT * FROM teachers;
+SELECT first_name, subject FROM teachers;
+/////////////////////////////////
+Challenge 4:
+
+CREATE TABLE students(
+    id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    teacher_id INT
+);
+
+
+INSERT INTO students(id, first_name, last_name, teacher_id)
+VALUES (1, 'Alice', 'Brown', 1),
+       (2, 'Bob', 'Johnson', 2);
+
+
+inner join:............
+
+SELECT students.first_name AS student_name, teachers.first_name AS teacher_name
+FROM students
+INNER JOIN teachers ON students.teacher_id = teachers.id;
+
+
+
+left join:...............
+
+SELECT students.first_name AS student_name, teachers.first_name AS teacher_name
+FROM students
+LEFT JOIN teachers ON students.teacher_id = teachers.id;
+
+right join:............
+
+SELECT students.first_name AS student_name, teachers.first_name AS teacher_name
+FROM students
+RIGHT JOIN teachers ON students.teacher_id = teachers.id;
+
+Full join:.............
+
+SELECT students.first_name AS student_name, teachers.first_name AS teacher_name
+FROM students
+LEFT JOIN teachers ON students.teacher_id = teachers.id
+
+UNION  
+
+SELECT students.first_name AS student_name, teachers.first_name AS teacher_name
+FROM students
+RIGHT JOIN teachers ON students.teacher_id = teachers.id
+WHERE students.id IS NULL;
+
+//////////////////////////////////////////////////////////
+
+
+
+
+
+
+
