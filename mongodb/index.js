@@ -21,7 +21,7 @@ app.get('/api', (req, res) => {
     console.log(`Listening at http://localhost:${port}`);
   });
   
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, Admin } = require('mongodb');
 const uri = "mongodb+srv://hassanfakih80:kJgq7ZRsZRBgj0jX@cluster0.adyejpk.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -45,4 +45,7 @@ async function run() {
     await client.close();
   }
 }
+
 run().catch(console.dir);
+
+
