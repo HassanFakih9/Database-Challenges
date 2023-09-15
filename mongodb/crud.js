@@ -18,7 +18,7 @@ const client = new MongoClient(uri);
 
 // Connect to MongoDB
 
-client.connect(async (err) => {
+await client.connect(async (err) => {
   if (err) {
     console.error("Error connecting to MongoDB:", err); // Log the error
     return;
@@ -83,9 +83,9 @@ app.put("/api/users/:id", async (req, res) => {
 });
 
 //**Delete** a user
-app.delete("/api/users/:_id", async (req, res) => {
+app.delete("/api/users/:id", async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userId = req.params.id; // Use "id" parameter
     const result = await usersCollection.deleteOne({ _id: userId });
     res.status(200).json({ message: "User deleted successfully", deletedCount: result.deletedCount });
   } catch (err) {
@@ -93,6 +93,7 @@ app.delete("/api/users/:_id", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server is listening at http://localhost:${port}`);
